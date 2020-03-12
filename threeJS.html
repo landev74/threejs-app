@@ -27,7 +27,15 @@
                 scene.add(lightOne);
                 scene.add(lightTwo);
                 
-                  
+                var paraFunction = function(a,b){
+                    var x = -5 + 5*a;
+                    var y = -5 + 5*b;
+                    var z = (Math.sin(a*Math.PI)+Math.sin(b*Math.PI) * -7);
+                    return new THREE.Vector3(x,y,z);
+                }
+                var parageometry = new THREE.ParametricGeometry(paraFunction,8,8);
+                var paramaterial = new THREE.MeshLambertMaterial({color: 0xF3FFE2});
+                
                 
 
                 
