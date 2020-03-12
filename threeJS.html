@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>threeJS</title>
+    </head>
+    <body>
+        <canvas id="Canvas"></canvas>
+            <script src="three.js-dev/build/three.js"></script>
+            <script>
+                var renderer = new THREE.WebGLRenderer({canvas: Canvas, antialias: true});
+                renderer.setClearColor(13362943);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+                var scene = new THREE.Scene();
+                var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+
+                var pyramidgeometry = new THREE.CylinderGeometry(0.1, 0.8, 2, 6, 2, false, 0, 6.3);
+                var pyramidmaterial = new THREE.MeshLambertMaterial({color: 0xF3FFE2});
+                var pyramidmesh = new THREE.Mesh(pyramidgeometry, pyramidmaterial);
+                pyramidmesh.position.set(0, 2, -10);
+                scene.add(pyramidmesh);
+
+                var lightOne = new THREE.AmbientLight(0xFFFF, 0.5);
+                var lightTwo = new THREE.AmbientLight(0xFFFF, 0.5);
+
+                scene.add(lightOne);
+                scene.add(lightTwo);
+                
+                  
+                
+
+                
+                requestAnimationFrame(render);
+
+                function render(){
+                    
+                     pyramidmesh.rotation.y += 0.01;
+                    //  meshobj.rotation.x += 0.1;
+
+                    
+                    renderer.render(scene, camera);
+                    requestAnimationFrame(render);
+
+                }
+
+               
+            </script>
+        
+    </body>
+</html>
